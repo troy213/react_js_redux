@@ -48,6 +48,10 @@ class Main extends Component {
     });
   }
 
+  componentDidMount(){
+    console.log("componentDidMount: Sukses!");
+  }
+
   render(){
     return(
       <>
