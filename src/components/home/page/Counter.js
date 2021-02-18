@@ -1,23 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
-class Counter extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      value: this.props.count
-    }
-  }
-
-  render(){
-    return(
-      <>
-        <h1>Saya mesin penghitung</h1>
-        <p>Count: {this.state.value}</p>
-        <button>Increment</button>
-      </>
-    );
-  }
+function Counter(props) {
+  return(
+    <>
+      <h1>Saya mesin penghitung</h1>
+      <p>Count: {props.count}</p>
+      <button onClick={props.onIncrementClick}>Increment</button>
+    </>
+  );
 }
 
 function mapStateToProps(state){
@@ -27,4 +18,14 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(Counter);
+function mapDispatchToProps(dispatch){
+  return {
+    onIncrementClick : () => {
+      console.log("tombol ditekan");
+      const action = { type : "INCREMENT" };
+      dispatch(action);
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
