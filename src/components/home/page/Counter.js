@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 function Counter(props) {
@@ -6,8 +7,8 @@ function Counter(props) {
     <>
       <h1>Saya mesin penghitung</h1>
       <p>Count: {props.count}</p>
-      <button onClick={props.onIncrementClick}>Increment</button>
-      <button onClick={props.onDecrementClick}>Decrement</button>
+      <Button onClick={props.onIncrementClick}>Increment</Button>
+      <Button onClick={props.onDecrementClick}>Decrement</Button>
     </>
   );
 }
