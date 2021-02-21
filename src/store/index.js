@@ -1,23 +1,22 @@
 import { createStore } from 'redux';
 
 const initialState = {
-  count: 3,
-  x: 0
-};
+  count: 0,
+  x: ""
+}
 
 const reducer = (state = initialState, action) => {
-  console.log("reducer berjalan", action);
+  console.log("reducer", action);
   switch (action.type) {
     case "INCREMENT":
       return Object.assign({}, state, { count: state.count + 1 });
-      break;
     case "DECREMENT":
       return Object.assign({}, state, { count: state.count - 1 });
-      break;
+    case "handleChange":
+      return Object.assign({}, state, { x: action.value });
     default:
-    return state;
+      return state;
   }
-  return state;
 }
 
 const store = createStore(reducer);

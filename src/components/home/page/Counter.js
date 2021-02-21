@@ -2,37 +2,50 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-function Counter(props) {
+const Counter = (props) => {
   return(
     <>
-      <h1>Saya mesin penghitung</h1>
+      <h1>mesin penghitung</h1>
       <p>Count: {props.count}</p>
-      <Button onClick={props.onIncrementClick}>Increment</Button>
-      <Button onClick={props.onDecrementClick}>Decrement</Button>
+      <Button variant="primary" onClick={props.onIncrementClick}>Increment</Button>
+      <Button variant="primary" onClick={props.onDecrementClick}>Decrement</Button>
+      <br />
+      <br />
+      <input type="text" value={props.x} onChange={props.handleChange} />
+      <br />
+      <Button variant="secondary" onClick={e => handleSubmit(e, props.x)}>Submit</Button>
     </>
   );
 }
 
-function mapStateToProps(state){
-  console.log('mapStateToProps', state);
-  return {
-    count: state.count
-  }
+const mapStateToProps = (state) => {
+  console.log("mapStateToProps", state);
+  return state;
 }
 
-function mapDispatchToProps(dispatch){
+const mapDispatchToProps = (dispatch) => {
   return {
     onIncrementClick : () => {
-      console.log("tombol increment diklik");
-      const action = { type : "INCREMENT" };
+      console.log("tombol Increment diklik");
+      const action = { type: "INCREMENT" };
       dispatch(action);
     },
     onDecrementClick : () => {
-      console.log("tombol decrement diklik");
-      const action = { type : "DECREMENT" };
+      console.log("tombol Decrement diklik");
+      const action = { type: "DECREMENT" };
+      dispatch(action);
+    },
+    handleChange : (e) => {
+      const eventTarget = e.target.value;
+      const action = { type: "handleChange", value: eventTarget };
       dispatch(action);
     }
   }
+}
+
+const handleSubmit = (e, value) => {
+  e.preventDefault();
+  alert(value);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
