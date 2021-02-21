@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Counter from './Counter';
-import store from '../../../store/';
+import store from '../../../store';
 
-class Contact extends Component{
-  render(){
-    return(
-      <>
-        <h1>Contact</h1>
-        <p>Silahkan Hubungi: 0838xxxxxxxx</p>
-        <Counter store={store} />
-      </>
-    );
-  }
+function Contact(props){
+  return(
+    <>
+      <h1>Contact</h1>
+      <p>Hub: 0838xxxxxxxx</p>
+      <Counter store={store} />
+    </>
+  );
 }
 
 export default Contact;

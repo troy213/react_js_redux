@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 
-class Form extends Component {
+class Form extends Component{
   constructor(props){
     super(props);
     this.state = {
       value: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.textInput = React.createRef();
   }
 
@@ -36,7 +36,12 @@ class Form extends Component {
     return(
       <>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.value} onChange={this.handleChange} ref={this.textInput} />
+          <input
+            type="text"
+            value={this.state.value}
+            onChange={this.handleChange}
+            ref={this.textInput}
+          />
           <Button variant="primary" type="submit">Submit</Button>
         </form>
         <Button variant="info" onClick={this.handleReset}>Reset</Button>

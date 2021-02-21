@@ -1,4 +1,5 @@
-const menuMakanan = [{
+const menuMakanan = [
+  {
     nama: "Nasi",
     harga: 5000
   },

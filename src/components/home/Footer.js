@@ -1,8 +1,9 @@
 import React from 'react';
 
 function Footer(props){
+  const x = "@2021";
   return(
-    <p>{props.foot} @2021</p>
+    <p>{props.foot} {x}</p>
   );
 }
 

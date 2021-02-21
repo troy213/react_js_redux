@@ -5,15 +5,14 @@ import { connect } from 'react-redux';
 const Counter = (props) => {
   return(
     <>
-      <h1>mesin penghitung</h1>
+      <h1>Mesin Penghitung</h1>
       <p>Count: {props.count}</p>
       <Button variant="primary" onClick={props.onIncrementClick}>Increment</Button>
       <Button variant="primary" onClick={props.onDecrementClick}>Decrement</Button>
       <br />
       <br />
       <input type="text" value={props.x} onChange={props.handleChange} />
-      <br />
-      <Button variant="secondary" onClick={e => handleSubmit(e, props.x)}>Submit</Button>
+      <Button variant="secondary" onClick={e => handlePesan(props.x, e)}>Kirim</Button>
     </>
   );
 }
@@ -32,18 +31,18 @@ const mapDispatchToProps = (dispatch) => {
     },
     onDecrementClick : () => {
       console.log("tombol Decrement diklik");
-      const action = { type: "DECREMENT" };
+      const action = { type: "DECREMENT"};
       dispatch(action);
     },
     handleChange : (e) => {
       const eventTarget = e.target.value;
-      const action = { type: "handleChange", value: eventTarget };
+      const action = { type: "handleChange", value: eventTarget }
       dispatch(action);
     }
   }
 }
 
-const handleSubmit = (e, value) => {
+const handlePesan = (value, e) => {
   e.preventDefault();
   alert(value);
 }

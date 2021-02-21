@@ -6,7 +6,7 @@ class Main extends Component {
   constructor(props){
     super(props);
     this.state = {
-      daftar: "State Daftar",
+      daftar: "state Daftar",
       daftarList: this.props.list,
       title: "Menu Makanan",
       title2: "Menu Minuman",
@@ -15,14 +15,22 @@ class Main extends Component {
       rendCond: false
     }
     this.handlePesan = this.handlePesan.bind(this);
-    this.rubahData = this.rubahData.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.rubahData = this.rubahData.bind(this);
     this.rubahRender = this.rubahRender.bind(this);
   }
 
-  handlePesan(value,e){
+  handlePesan(value, e){
     e.preventDefault();
     alert(value);
+  }
+
+  handleChange(value, e){
+    const eventTarget = e.target.value;
+    this.setState({
+      [value]: eventTarget
+    });
+    console.log(eventTarget);
   }
 
   rubahData(){
@@ -34,14 +42,6 @@ class Main extends Component {
     });
   }
 
-  handleChange(value,e){
-    const eventTarget = e.target.value;
-    this.setState({
-      [value]: eventTarget
-    });
-    console.log(eventTarget);
-  }
-
   rubahRender(){
     this.setState({
       rendCond: !this.state.rendCond
@@ -49,7 +49,7 @@ class Main extends Component {
   }
 
   componentDidMount(){
-    console.log("componentDidMount: Sukses!");
+    console.log("componentDidMount Berjalan");
   }
 
   render(){
@@ -80,15 +80,17 @@ class Main extends Component {
             { menuMakanan.map((value,index) => {
               return(
                 <div key={index}>
-                  <p>No: {index +1}</p>
+                  <p>No: {index+1}</p>
                   <p>Nama: {value.nama}</p>
                   <p>Harga: {value.harga}</p>
                 </div>
               );
             })}
           </>
-        ) : (
-          <h3>Silahkan klik tombol Rubah Render</h3>
+        ):(
+          <>
+            <h3>Silahkan Klik Tombol Rubah Render</h3>
+          </>
         )}
         <Button variant="primary" onClick={this.rubahRender}>Rubah Render</Button>
       </>

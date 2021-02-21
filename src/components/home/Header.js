@@ -1,18 +1,14 @@
 import React from 'react';
 
 const Header = (props) => {
-  const handlePesan = (value,e) => {
+  const handlePesan = (value, e) => {
     e.preventDefault();
     alert(value);
   }
-
-  var x = "Header";
   return(
-    <>
-      <a href="/" onClick={e => handlePesan("Header",e)} >
-        <h1>{x} {props.head}</h1>
-      </a>
-    </>
+    <a href="/" onClick={e => handlePesan("React Redux", e)}>
+      <h1>{props.head}</h1>
+    </a>
   );
 }
 
