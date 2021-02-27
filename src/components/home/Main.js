@@ -6,7 +6,7 @@ class Main extends Component {
   constructor(props){
     super(props);
     this.state = {
-      daftar: "state Daftar",
+      daftar: "state daftar",
       daftarList: this.props.list,
       title: "Menu Makanan",
       title2: "Menu Minuman",
@@ -20,12 +20,12 @@ class Main extends Component {
     this.rubahRender = this.rubahRender.bind(this);
   }
 
-  handlePesan(value, e){
+  handlePesan(value,e){
     e.preventDefault();
     alert(value);
   }
 
-  handleChange(value, e){
+  handleChange(value,e){
     const eventTarget = e.target.value;
     this.setState({
       [value]: eventTarget
@@ -49,7 +49,7 @@ class Main extends Component {
   }
 
   componentDidMount(){
-    console.log("componentDidMount Berjalan");
+    console.log("componentDidMount berjalan");
   }
 
   render(){
@@ -80,7 +80,7 @@ class Main extends Component {
             { menuMakanan.map((value,index) => {
               return(
                 <div key={index}>
-                  <p>No: {index+1}</p>
+                  <p>No: {index + 1}</p>
                   <p>Nama: {value.nama}</p>
                   <p>Harga: {value.harga}</p>
                 </div>

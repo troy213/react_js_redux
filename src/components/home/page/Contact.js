@@ -1,12 +1,12 @@
 import React from 'react';
 import Counter from './Counter';
-import store from '../../../store';
+import store from '../../../store/';
 
 function Contact(props){
   return(
     <>
       <h1>Contact</h1>
-      <p>Hub: 0838xxxxxxxx</p>
+      <p>hub: 0838xxxxxxxx</p>
       <Counter store={store} />
     </>
   );

@@ -1,9 +1,10 @@
 import React from 'react';
 
-function Footer(props){
-  const x = "@2021";
+function Footer(props) {
+  const year = new Date();
+  const x = year.getFullYear();
   return(
-    <p>{props.foot} {x}</p>
+    <p>{props.foot} @{x}</p>
   );
 }
 

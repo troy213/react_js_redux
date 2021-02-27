@@ -5,8 +5,9 @@ const Header = (props) => {
     e.preventDefault();
     alert(value);
   }
+
   return(
-    <a href="/" onClick={e => handlePesan("React Redux", e)}>
+    <a href="/" onClick={e => handlePesan(props.head,e)}>
       <h1>{props.head}</h1>
     </a>
   );

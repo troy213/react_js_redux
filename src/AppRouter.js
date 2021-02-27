@@ -11,20 +11,16 @@ const AppRouter = () => (
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/Contact">Contact</Link>
+          <Link to="/contact">Contact</Link>
         </li>
         <li>
-          <a
-            href="https://www.google.com"
-            rel="noopener noreferrer"
-            target="_blank"
-          >Google</a>
+          <a href="https://www.google.com" rel="noopener noreferrer" target="_blank">Google</a>
         </li>
       </ul>
-
-      <Route path="/" exact component={App} />
-      <Route path="/Contact" component={Contact} />
     </div>
+
+    <Route path="/" exact component={App} />
+    <Route path="/contact" component={Contact} />
   </Router>
 );
 

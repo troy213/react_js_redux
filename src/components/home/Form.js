@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 
-class Form extends Component{
+class Form extends Component {
   constructor(props){
     super(props);
     this.state = {
       value: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleReset = this.handleReset.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleReset = this.handleReset.bind(this);
     this.textInput = React.createRef();
   }
 

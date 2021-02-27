@@ -10,7 +10,6 @@ const Counter = (props) => {
       <Button variant="primary" onClick={props.onIncrementClick}>Increment</Button>
       <Button variant="primary" onClick={props.onDecrementClick}>Decrement</Button>
       <br />
-      <br />
       <input type="text" value={props.x} onChange={props.handleChange} />
       <Button variant="secondary" onClick={e => handlePesan(props.x, e)}>Kirim</Button>
     </>
@@ -18,7 +17,7 @@ const Counter = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log("mapStateToProps", state);
+  console.log("mapStateToProps berjalan", state);
   return state;
 }
 
@@ -31,7 +30,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     onDecrementClick : () => {
       console.log("tombol Decrement diklik");
-      const action = { type: "DECREMENT"};
+      const action = { type: "DECREMENT" };
       dispatch(action);
     },
     handleChange : (e) => {
@@ -42,7 +41,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const handlePesan = (value, e) => {
+const handlePesan = (value,e) => {
   e.preventDefault();
   alert(value);
 }
