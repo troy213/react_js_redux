@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 import menuMakanan from './lib/Food';
 
 class Main extends Component {
@@ -20,12 +20,12 @@ class Main extends Component {
     this.rubahRender = this.rubahRender.bind(this);
   }
 
-  handlePesan(value,e){
+  handlePesan(value, e){
     e.preventDefault();
     alert(value);
   }
 
-  handleChange(value,e){
+  handleChange(value, e){
     const eventTarget = e.target.value;
     this.setState({
       [value]: eventTarget
@@ -58,7 +58,7 @@ class Main extends Component {
         { this.state.rendCond === true ? (
           <>
             <p>{this.state.daftar}</p>
-            <a href="/" onClick={e => this.handlePesan(this.state.daftarList,e)}>
+            <a href="/" onClick={e => this.handlePesan(this.props.list, e)}>
               <p>{this.state.daftarList}</p>
             </a>
             <h3>{this.state.title}</h3>
@@ -77,19 +77,30 @@ class Main extends Component {
               value={this.state.inputKota}
               onChange={e => this.handleChange("inputKota",e)}
             />
-            { menuMakanan.map((value,index) => {
-              return(
-                <div key={index}>
-                  <p>No: {index + 1}</p>
-                  <p>Nama: {value.nama}</p>
-                  <p>Harga: {value.harga}</p>
-                </div>
-              );
-            })}
+            <Table striped bordered hover size="sm">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nama</th>
+                  <th>Harga</th>
+                </tr>
+              </thead>
+              <tbody>
+                { menuMakanan.map((value,index) => {
+                  return(
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{value.nama}</td>
+                      <td>{value.harga}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
           </>
         ):(
           <>
-            <h3>Silahkan Klik Tombol Rubah Render</h3>
+            <h3>Silahkan Klik Rubah Render</h3>
           </>
         )}
         <Button variant="primary" onClick={this.rubahRender}>Rubah Render</Button>

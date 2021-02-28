@@ -14,6 +14,8 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, { count: state.count - 1 });
     case "handleChange":
       return Object.assign({}, state, { x: action.value });
+    case "handleReset":
+      return Object.assign({}, state, { x: "" });
     default:
       return state;
   }
