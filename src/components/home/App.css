@@ -27,6 +27,13 @@ a {
   color: black;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
+;
+
 li a:hover {
   background-color: #111;
+  text-decoration: none;
 }

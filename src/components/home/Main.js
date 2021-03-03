@@ -12,12 +12,14 @@ class Main extends Component {
       title2: "Menu Minuman",
       inputValue: "",
       inputKota: "",
-      rendCond: false
+      rendCond: false,
+      food: menuMakanan
     }
     this.handlePesan = this.handlePesan.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.rubahData = this.rubahData.bind(this);
     this.rubahRender = this.rubahRender.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
   handlePesan(value, e){
@@ -45,6 +47,13 @@ class Main extends Component {
   rubahRender(){
     this.setState({
       rendCond: !this.state.rendCond
+    });
+  }
+
+  removeItem(id){
+    let newItem = this.state.food.filter((value) => value.id !== id);
+    this.setState({
+      food: newItem
     });
   }
 
@@ -77,21 +86,26 @@ class Main extends Component {
               value={this.state.inputKota}
               onChange={e => this.handleChange("inputKota",e)}
             />
+            <br />
+            <br />
             <Table striped bordered hover size="sm">
               <thead>
                 <tr>
                   <th>#</th>
                   <th>Nama</th>
                   <th>Harga</th>
+                  <th>Hapus</th>
                 </tr>
               </thead>
               <tbody>
-                { menuMakanan.map((value,index) => {
+                { this.state.food.map((value,index) => {
+                  const {id, nama, harga} = value;
                   return(
                     <tr key={index}>
                       <td>{index + 1}</td>
-                      <td>{value.nama}</td>
-                      <td>{value.harga}</td>
+                      <td>{nama}</td>
+                      <td>{harga}</td>
+                      <td><button variant="secondary" onClick={() => this.removeItem(id)}>Remove</button></td>
                     </tr>
                   );
                 })}

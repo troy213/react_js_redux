@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Header = (props) => {
   const handlePesan = (value,e) => {
@@ -6,9 +6,24 @@ const Header = (props) => {
     alert(value);
   }
 
+  const [title, setTitle] = useState('Welcome!');
+
+  const handleMouseOver = () => {
+    if ( title === "React Redux") {
+      setTitle('Welcome!');
+    } else {
+      setTitle('React Redux');
+    }
+  }
+
   return(
-    <a href="/" onClick={e => handlePesan("React Redux!",e)}>
-      <h1>React Redux</h1>
+    <a
+      href="/"
+      onClick={e => handlePesan("React Redux!",e)}
+      onMouseEnter={handleMouseOver}
+      onMouseLeave={handleMouseOver}
+    >
+      <h1>{title}</h1>
     </a>
   );
 }
