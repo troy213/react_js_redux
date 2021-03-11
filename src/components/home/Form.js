@@ -42,7 +42,7 @@ class Form extends Component {
             onChange={this.handleChange}
             ref={this.textInput}
           />
-          <Button variant="primary" onClick={this.handleSubmit} type="submit" size="sm">Submit</Button>
+          <Button variant="primary" type="submit" size="sm">Submit</Button>
         </form>
         <Button variant="info" onClick={this.handleReset}>Reset</Button>
       </>

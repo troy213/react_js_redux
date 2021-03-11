@@ -20,7 +20,7 @@ const AppRouter = () => (
     </div>
 
     <Route path="/" exact component={App} />
-    <Route path="/contact" component={Contact}/>
+    <Route path="/contact" component={Contact} />
   </Router>
 );
 

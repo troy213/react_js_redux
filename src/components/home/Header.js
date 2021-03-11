@@ -18,26 +18,26 @@ const Header = (props) => {
   }, []);
 
   const handleMouseOver = () => {
-    if ( title === "React Redux") {
-      setTitle(props.head);
+    if (title === props.head) {
+      setTitle("React Redux");
     } else {
-      setTitle('React Redux');
+      setTitle(props.head);
     }
   }
 
   return(
     <>
-    <h1>
+      <h1>
         <a
           href="/"
-          onClick={e => handlePesan("React Redux!",e)}
+          onClick={e => handlePesan(title,e)}
           onMouseEnter={handleMouseOver}
           onMouseLeave={handleMouseOver}
         >
           {title}
         </a>
       </h1>
-      <h3>{size} Px</h3>
+      <h4>{size} px</h4>
     </>
   );
 }

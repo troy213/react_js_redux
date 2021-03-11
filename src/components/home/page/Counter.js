@@ -52,7 +52,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleChange : (e) => {
       const eventTarget = e.target.value;
-      const action = { type: "handleChange", value: eventTarget};
+      const action = { type: "handleChange", value: eventTarget };
       dispatch(action);
     },
     handleReset : () => {
