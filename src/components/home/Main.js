@@ -74,6 +74,7 @@ class Main extends Component {
             <h3>{this.state.title2}</h3>
             <Button variant="primary" onClick={this.rubahData}>Rubah Data</Button>
             <br />
+            <br />
             <input
               type="text"
               placeholder="Input Nama"
@@ -88,29 +89,33 @@ class Main extends Component {
             />
             <br />
             <br />
-            <Table striped bordered hover size="sm">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Nama</th>
-                  <th>Harga</th>
-                  <th>Hapus</th>
-                </tr>
-              </thead>
-              <tbody>
-                { this.state.food.map((value,index) => {
-                  const {id, nama, harga} = value;
-                  return(
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>{nama}</td>
-                      <td>{harga}</td>
-                      <td><button variant="secondary" onClick={() => this.removeItem(id)}>Remove</button></td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </Table>
+            { this.state.food.length === 0 ? (
+              <p>Table Empty!</p>
+            ):(
+              <Table striped bordered hover size="sm">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Nama</th>
+                    <th>Harga</th>
+                    <th>Hapus</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  { this.state.food.map((value,index) => {
+                    const {id, nama, harga} = value;
+                    return(
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{nama}</td>
+                        <td>{harga}</td>
+                        <td><button variant="secondary" onClick={() => this.removeItem(id)}>Remove</button></td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </Table>
+            )}
           </>
         ):(
           <>

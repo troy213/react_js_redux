@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Header = (props) => {
   const handlePesan = (value,e) => {
@@ -6,25 +6,39 @@ const Header = (props) => {
     alert(value);
   }
 
-  const [title, setTitle] = useState('Welcome!');
+  const [title, setTitle] = useState(props.head);
+  const [size, setSize] = useState(window.innerWidth);
+
+  const checkSize = () => {
+    setSize(window.innerWidth);
+  }
+
+  useEffect(()=>{
+    window.addEventListener('resize', checkSize);
+  }, []);
 
   const handleMouseOver = () => {
     if ( title === "React Redux") {
-      setTitle('Welcome!');
+      setTitle(props.head);
     } else {
       setTitle('React Redux');
     }
   }
 
   return(
-    <a
-      href="/"
-      onClick={e => handlePesan("React Redux!",e)}
-      onMouseEnter={handleMouseOver}
-      onMouseLeave={handleMouseOver}
-    >
-      <h1>{title}</h1>
-    </a>
+    <>
+    <h1>
+        <a
+          href="/"
+          onClick={e => handlePesan("React Redux!",e)}
+          onMouseEnter={handleMouseOver}
+          onMouseLeave={handleMouseOver}
+        >
+          {title}
+        </a>
+      </h1>
+      <h3>{size} Px</h3>
+    </>
   );
 }
 

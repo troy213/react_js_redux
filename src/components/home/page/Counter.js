@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
@@ -9,6 +9,14 @@ const Counter = (props) => {
     textInput.focus();
     props.handleReset();
   }
+
+  useEffect(()=>{
+    if (props.count > 0) {
+      document.title = `New Message(${props.count})`;
+    } else {
+      document.title = 'React App';
+    }
+  }, [props.count]);
 
   return(
     <>

@@ -9,7 +9,7 @@ import './App.css';
 function App(){
   return(
     <>
-      <Header head="React Redux" />
+      <Header head="Welcome!" />
       <List />
       <Main list="state daftarList" />
       <Form />
