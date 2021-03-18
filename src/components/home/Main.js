@@ -10,21 +10,24 @@ class Main extends Component {
       daftarList: this.props.list,
       title: "Menu Makanan",
       title2: "Menu Minuman",
-      inputValue: "",
-      inputKota: "",
+      inputNama: "",
+      inputHarga: "",
       rendCond: false,
-      food: menuMakanan
+      food: menuMakanan,
+      count: menuMakanan.length + 1
     }
     this.handlePesan = this.handlePesan.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.rubahData = this.rubahData.bind(this);
     this.rubahRender = this.rubahRender.bind(this);
     this.removeItem = this.removeItem.bind(this);
+    this.addData = this.addData.bind(this);
   }
 
   handlePesan(value, e){
     e.preventDefault();
     alert(value);
+    console.log(this.state.food);
   }
 
   handleChange(value, e){
@@ -32,7 +35,6 @@ class Main extends Component {
     this.setState({
       [value]: eventTarget
     });
-    console.log(eventTarget);
   }
 
   rubahData(){
@@ -57,6 +59,25 @@ class Main extends Component {
     });
   }
 
+  checkId(){
+    this.setState({
+      count: this.state.count + 1
+    });
+    return this.state.count;
+  }
+
+  addData(e){
+    const makanan = { id: this.checkId(),nama: this.state.inputNama, harga: Number(this.state.inputHarga) }
+    if (makanan.nama && makanan.harga) {
+      this.setState({
+        food: [...this.state.food, makanan]
+      });
+    } else {
+      e.preventDefault();
+      alert("Data masih ada yang kosong!");
+    }
+  }
+
   componentDidMount(){
     console.log("componentDidMount berjalan");
   }
@@ -78,15 +99,18 @@ class Main extends Component {
             <input
               type="text"
               placeholder="Input Nama"
-              value={this.state.inputValue}
-              onChange={e => this.handleChange("inputValue",e)}
+              value={this.state.inputNama}
+              onChange={e => this.handleChange("inputNama",e)}
             />
             <input
               type="text"
-              placeholder="Input Kota"
-              value={this.state.inputKota}
-              onChange={e => this.handleChange("inputKota",e)}
+              placeholder="Input Harga"
+              value={this.state.inputHarga}
+              onChange={e => this.handleChange("inputHarga",e)}
             />
+            <br />
+            <br />
+            <Button variant="secondary" onClick={this.addData}>Tambah</Button>
             <br />
             <br />
             { this.state.food.length === 0 ? (
