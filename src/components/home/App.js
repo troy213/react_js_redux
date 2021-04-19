@@ -6,11 +6,16 @@ import Main from './Main';
 import Form from './Form';
 import './App.css';
 
-function App(){
+export const imageContext = React.createContext();
+
+const App = () => {
   return(
     <>
       <Header head="Welcome!" />
-      <List />
+      <imageContext.Provider
+        value={{ link:"https://miro.medium.com/max/800/1*VeM-5lsAtrrJ4jXH96h5kg.png" }}>
+          <List />
+      </imageContext.Provider>
       <Main list="state daftarList" />
       <Form />
       <Footer foot="Niomic" />

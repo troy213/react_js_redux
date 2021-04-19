@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { imageContext } from './App';
 
-function Image(props){
+const Image = (props) => {
+  const {link} = useContext(imageContext);
   return(
-    <img src={props.link} alt="React Redux" width={props.lbr} />
+    <img src={link} alt="React Redux" width={props.lbr} />
   );
 }
 
