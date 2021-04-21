@@ -1,54 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { useFetch } from '../../hooks/UseFetch';
 
 const url = "https://api.github.com/users";
 
 const Users = (props) => {
-  const [users, setUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false)
-
-  //--async - await fetching format--
-  // const getUsers = async () => {
-  //   const response = await fetch(url);
-  //   const users = await response.json();
-  //   setUsers(users);
-  // }
-  //
-  // useEffect(()=>{
-  //   getUsers();
-  // }, []);
-
-  useEffect(()=>{
-    fetch(url)
-      .then((resp) => {
-        if (resp.status >= 200 && resp.status <= 299) {
-          return resp.json();
-        } else {
-          setIsLoading(false);
-          setIsError(true);
-        }
-      })
-      .then((user) => {
-        setUsers(user);
-        setIsLoading(false);
-      })
-      .catch(err => console.log(err))
-  }, []);
+  const { isLoading, isError, data} = useFetch(url);
 
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return <h3>Loading...</h3>
   }
   if (isError) {
     return (
       <>
-        <h2>404 Not Found</h2>
+        <h3>404 Not Found</h3>
         <p>Error...</p>
       </>
     );
   }
   return(
     <>
-      { users.map((value) => {
+      { data.map((value) => {
         const {login,id,avatar_url,html_url} = value;
         return(
           <div key={id}>
