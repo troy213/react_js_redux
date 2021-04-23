@@ -1,8 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import App from './components/home/App';
 import Contact from './components/page/Contact';
 import Users from './components/page/Users';
+import Error from './components/page/Error';
+import Person from './components/page/Person';
 
 const AppRouter = () => (
   <Router>
@@ -23,9 +25,13 @@ const AppRouter = () => (
       </ul>
     </div>
 
-    <Route path="/" exact component={App} />
-    <Route path="/contact" component={Contact} />
-    <Route path="/users" component={Users} />
+    <Switch>
+      <Route path="/" exact component={App} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/users" component={Users} />
+      <Route path="/person/:name" children={<Person />} />
+      <Route path="*" component={Error} />
+    </Switch>
   </Router>
 );
 

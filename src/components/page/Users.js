@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Error from './Error';
 import { useFetch } from '../../hooks/UseFetch';
+import { Link } from 'react-router-dom';
 
 const url = "https://api.github.com/users";
 
@@ -12,7 +14,7 @@ const Users = (props) => {
   if (isError) {
     return (
       <>
-        <h3>404 Not Found</h3>
+        <Error />
         <p>Error...</p>
       </>
     );
@@ -25,7 +27,7 @@ const Users = (props) => {
           <div key={id}>
             <img src={avatar_url} alt={login} width="50px" className="avatar" />
             <h4>{login}</h4>
-            <a href={html_url}>profile</a>
+            <Link to={`/person/${login}`}>profile</Link>
           </div>
         );
       })}

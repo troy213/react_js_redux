@@ -34,7 +34,7 @@ const Counter = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log("mapStateToProps", state);
+  // console.log("mapStateToProps", state);
   return state;
 }
 
