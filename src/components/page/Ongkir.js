@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { Table } from 'react-bootstrap';
 import ongkir from '../home/lib/JNE';
@@ -76,6 +77,15 @@ const Ongkir = () => {
           </>
         )
       }
+=======
+import React from 'react';
+import ongkir from '../home/lib/JNE';
+
+const Ongkir = () => {
+  return(
+    <>
+      <h1>Ongkir</h1>
+>>>>>>> main
     </>
   );
 }
