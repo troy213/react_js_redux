@@ -5,6 +5,7 @@ import ongkir from '../home/lib/JNE';
 const Ongkir = () => {
   const [data, setData] = useState(ongkir);
   const [count, setCount] = useState(0);
+  const [cari, setCari] = useState("");
 
   const prevPage = (e) => {
     if (count <= 0) {
@@ -24,9 +25,28 @@ const Ongkir = () => {
     }
   }
 
+  const cariData = (e) => {
+    e.preventDefault();
+    if (cari === "") {
+      setData(ongkir);
+      setCount(0);
+    } else {
+      const newData = ongkir.filter((value) => value.kota.toLowerCase() == cari.toLowerCase());
+      setData(newData);
+      setCount(0);
+    }
+  }
+
   return(
     <>
       <h1>Ongkir</h1>
+      <input
+        type="text"
+        placeholder="cari"
+        value={cari}
+        onChange={(e) => setCari(e.target.value)}
+      />
+      <button onClick={cariData}>Cari</button>
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
@@ -59,7 +79,7 @@ const Ongkir = () => {
         </tbody>
       </Table>
       {
-        (count <= 0) || (count >= 9990) ? (
+        (count <= 0) || (count >= (data.length - 10)) ? (
           count <= 0 ? (
             <>
               <button onClick={nextPage}>Next</button>
